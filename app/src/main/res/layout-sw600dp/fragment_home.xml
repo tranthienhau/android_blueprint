@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="notifyId"
+            type="int" />
+        <variable
+            name="dashboardId"
+            type="int" />
+        <variable
+            name="homeViewModel"
+            type="ago.droid.blueprint.viewmodels.home.HomeViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#121D29"
+        android:id="@+id/fr_home"
+        tools:context=".pages.home.HomeFragment">
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lvCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="40dp"
+                    android:overScrollMode="never"
+                    app:layout_constraintBottom_toTopOf="@+id/text_home4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" >
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/text_home4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Sollicitudin in tortor."
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{homeViewModel.cards.size() == 0? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/lvCard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/lvCard"
+                    app:layout_constraintTop_toTopOf="@+id/lvCard" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Platea sollicitudin platea habitant senectus. Placerat."
+                    android:textColor="#FCFCFC"
+                    app:layout_constraintBottom_toTopOf="@+id/btnDashboard"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/btnDashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ic_button_line"
+                    android:orientation="horizontal"
+                    android:onClick="@{(view) -> homeViewModel.navigateToFragment(view.id, dashboardId)}"
+                    app:layout_constraintBottom_toTopOf="@+id/btnNotification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Egestas scleri"
+                    android:textColor="#FCFCFC"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnDashboard"
+                    app:layout_constraintStart_toStartOf="@+id/btnDashboard"
+                    app:layout_constraintTop_toTopOf="@+id/btnDashboard" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_icon_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnDashboard"
+                    app:layout_constraintEnd_toEndOf="@+id/btnDashboard"
+                    app:layout_constraintTop_toTopOf="@+id/btnDashboard" />
+
+                <LinearLayout
+                    android:id="@+id/btnNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ic_button_line"
+                    android:orientation="horizontal"
+                    android:onClick="@{(view) -> homeViewModel.navigateToFragment(view.id, notifyId)}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="Consectur"
+                    android:textColor="#FCFCFC"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnNotification"
+                    app:layout_constraintStart_toStartOf="@+id/btnNotification"
+                    app:layout_constraintTop_toTopOf="@+id/btnNotification" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_icon_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnNotification"
+                    app:layout_constraintEnd_toEndOf="@+id/btnNotification"
+                    app:layout_constraintTop_toTopOf="@+id/btnNotification" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
