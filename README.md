@@ -69,7 +69,7 @@ There are 3 main modules to help separate the code. They are Data, Domain, and P
 
 - [Mockito](https://github.com/mockito/mockito)
 - [Espresso](https://developer.android.com/training/testing/espresso)
-- [Junit] (https://developer.android.com/training/testing/unit-testing)
+- [Junit](https://developer.android.com/training/testing/unit-testing)
 - Write unit test for ViewModel (**CardsViewModel** & **ComponentsViewModel**).
 - Able to write particular unit test for **data** module and **domain** module.
 
